@@ -41,7 +41,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('user: ${user?.username} | ${user?.email}'),
+      child: Text('user: ${user?.idStore} | ${user?.username}'),
     );
   }
 }
