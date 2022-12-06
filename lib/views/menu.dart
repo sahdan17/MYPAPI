@@ -20,8 +20,8 @@ class _MenuState extends State<Menu> {
   List<Widget> pages = [
     //PostPage(),
     //SliderPage(),
-    Profile(),
-    Profile(),
+    //Profile(),
+    //Profile(),
     Profile(),
   ];
 
@@ -85,7 +85,7 @@ class _MenuState extends State<Menu> {
 
       // body
       // body: const HomePage(),
-      body: pages[currentPage],
+      body: pages[0],
     );
   }
 }
