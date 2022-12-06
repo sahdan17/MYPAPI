@@ -42,10 +42,10 @@ Future<ApiResponse> login(String username, String password) async {
 Future<ApiResponse> getUserDetail() async {
   ApiResponse apiResponse = ApiResponse();
   try {
-    String token = await getToken();
-    final response = await http.get(Uri.parse(userURL), headers: {
+    String accessToken = await getToken();
+    final response = await http.post(Uri.parse(userURL), headers: {
       'Accept': 'application/json',
-      'Authorization': 'Bearer $token'
+      'Authorization': 'Bearer $accessToken'
     });
 
     switch (response.statusCode) {
@@ -71,14 +71,14 @@ Future<String> getToken() async {
   return pref.getString('accessToken') ?? '';
 }
 
-// get user id
-Future<int> getUserId() async {
+// get username
+Future<String> getUsername() async {
   SharedPreferences pref = await SharedPreferences.getInstance();
-  return pref.getInt('id') ?? 0;
+  return pref.getString('username') ?? '';
 }
 
 // logout
 Future<bool> logout() async {
   SharedPreferences pref = await SharedPreferences.getInstance();
-  return await pref.remove('token');
+  return await pref.remove('accessToken');
 }
