@@ -38,9 +38,10 @@ class _LoginState extends State<Login> {
 
   void _saveAndRedirect(User user) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.setString('token', user.accessToken ?? '');
+    await pref.setString('accessToken', user.accessToken ?? '');
     await pref.setString('rc', user.rc ?? '');
     await pref.setString('message', user.message ?? '');
+    await pref.setString('idStore', user.idStore ?? '');
     await pref.setString('username', user.username ?? '');
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(
@@ -65,7 +66,7 @@ class _LoginState extends State<Login> {
           children: [
             TextFormField(
               controller: txtUsername,
-              validator: (val) => val!.isEmpty ? 'Invalid usernam' : null,
+              validator: (val) => val!.isEmpty ? 'Invalid username' : null,
               decoration: kInputDecoration('Username'),
             ),
             const SizedBox(
